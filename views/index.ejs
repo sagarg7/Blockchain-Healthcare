@@ -1,0 +1,93 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Healthcare Management</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        main {
+            margin-top: 60px;
+        }
+
+        #content {
+            display: none;
+        }
+
+        form {
+            width: 350px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            margin-bottom: 0px;
+        }
+
+        #completedTaskList .content {
+            color: grey;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <%- include ('partials/messages') %>
+    <div style="vertical-align: middle;">
+        <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+            <a class="nav-link" href="#"><span>Healthcare Management System</span></a>
+            <!-- <ul class="navbar-nav px-3">
+                <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+                    <small><a class="nav-link" href="#"><span id="account">
+                                <%= account %>
+                            </span></a></small>
+                </li>
+            </ul> -->
+        </nav>
+        <center><br><br><br><br>
+            <div>
+                <h1>
+                    Patient Details
+                </h1>
+            </div>
+        </center>
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table">
+                    <tr class="thead-dark">
+                        <th>PatientID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Heartbeat Rate(per min)</th>
+                        <th>CO Level</th>
+                        <th>CO2 Level</th>
+                        <th>Body Temp</th>
+                        <th>Room Temp</th>
+                        <th>Diagnosis</th>
+                    </tr>
+                    <tbody>
+                        <%= for(patient in patients) { %>
+                            <tr>
+                                <td><%= patient.id %></td>
+                                <td><%= patient.fname %></td>
+                                <td><%= patient.lname %></td>
+                                <td><%= patient.heartbeat %></td>
+                                <td><%= patient.CO %></td>
+                                <td><%= patient.CO2 %></td>
+                                <td><%= patient.body_temp_w %>.<%=patient.body_temp_d %>F</td>
+                                <td><%= patient.room_temp_w %>.<%=patient.room_temp_d %>F</td>
+                                <td><%= patient.diagnosis %></td>
+                            </tr>
+                            <% } %>
+                    </tbody>
+                </table>
+                <center><a href="/add" class="btn btn-primary mb-2">Add diagnosis</a></center>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

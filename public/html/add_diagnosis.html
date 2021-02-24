@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Healthcare Management</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+      main {
+        margin-top: 60px;
+      }
+
+      #content {
+        display: none;
+      }
+
+      form {
+        width: 350px;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        margin-bottom: 0px;
+      }
+
+      #completedTaskList .content {
+        color: grey;
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body >
+    <div style="vertical-align: middle;">
+      <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="nav-link" href="#"><span>Healthcare Management System</span></a>
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
+          <small><a class="nav-link" href="#"><span id="account"></span></a></small>
+        </li>
+      </ul>
+    </nav>
+    <center><br><br><br><br>
+      <div>
+        <h1>
+          Add Diagnosis
+        </h1>  
+      </div>
+    </center>
+    <div class="container-fluid">
+      <div class="row">
+        <main role="main" class="col-lg-12 d-flex justify-content-center">
+          <div id="loader" class="text-center">
+            <p class="text-center">Loading...</p><br>
+          </div>
+          <div id="content">
+            <form onsubmit="App.addDiagnosis(); return false;">
+                <div class="form-group" onmouseover="App.loadDiagnosisForm(); return false;">
+                    <label for="pid">PID</label>
+                    <select class="form-control" id="pid" onload="App.loadDiagnosisForm(); return false;" onchange="App.loadPatientDetails(); return false;">
+                      <!-- <option>a</option>
+                      <option>b</option> -->
+                    </select>
+                  </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="fname">First Name:</label>
+                        <input type="text" readonly class="form-control" id="fname" placeholder="---">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" readonly class="form-control" id="lname" placeholder="---">
+                    </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group">
+                      <label for="hospital">Hospital Name:</label>
+                      <input type="text" readonly class="form-control" id="hospital" placeholder="---">
+                  </div>
+              </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="hbeat">Heartbeat:</label>
+                        <input type="text" readonly class="form-control" id="hbeat" placeholder="---">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="co2">CO2:</label>
+                        <input type="text" readonly class="form-control" id="co2" placeholder="---">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="co">CO:</label>
+                        <input type="text" readonly class="form-control" id="co" placeholder="---">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="rtemp">Room Temperature:</label>
+                        <input type="text" readonly class="form-control" id="rtemp" placeholder="---">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="btemp">Body Temperature:</label>
+                        <input type="text" readonly class="form-control" id="btemp" placeholder="---">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="diagnosis">Diagnosis:</label>
+                    <textarea class="form-control" id="diagnosis" rows="3"></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary mb-2 text-center">Save</button>
+                </div>
+              </form>
+          </div>
+        </main>
+      </div>  
+    </div>
+  </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
+<!-- <form class="form-inline" onSubmit="App.addDiagnosis(); return false;">\
+  <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Diagnosis">\
+<button type="submit" class="btn btn-primary mb-2">Add</button></form> -->
