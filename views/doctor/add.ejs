@@ -1,0 +1,68 @@
+<html>
+
+<head>
+    <title>Doctor | Diagnose</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/doctor/logout">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/doctor/home">Home</a>
+                </li>
+
+            </ul>
+            <span class="navbar-brand">
+                Welcome Dr. <%= doctor.fname %>
+                    <%= doctor.lname %>
+            </span>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container">
+            <center>
+                <h2> Add Diagnosis</h2>
+            </center>
+        </div>
+        <div class="container">
+            <form method="POST">
+                <div class="form-group">
+                    <label for="bpm">Heartbeat Rate (in BPM)</label><br>
+                    <input class="form-control" type="text" id="bpm" name="bpm" value="<%= bpm %>" readonly><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="temp">Temperature (in F)</label><br>
+                    <input class="form-control" type="text" id="temp" name="temp" value="<%= temp %>" readonly><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="symp">Symptoms</label><br>
+                    <input class="form-control" type="text" id="symp" name="symp" value="<%= symp %>" readonly><br>
+                </div>
+
+                <div class="form-group">
+                    <label for="diag">Diagnosis:</label><br>
+                    <input class="form-control" type="diag" id="diag" name="diag"><br>
+                </div>
+
+                <div class="form-group">
+                    <center>
+                        <input class="btn btn-primary" type="submit" value="Add">
+                    </center>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
