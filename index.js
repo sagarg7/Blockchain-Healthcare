@@ -249,7 +249,7 @@ app
     temp = req.body.temp;
     symp = req.body.symp;
     console.log(symp);
-    request.post(baseURL + '/add',
+    request.post(baseURL + 'add',
       {
         json: {
           bpm: bpm,
@@ -302,7 +302,7 @@ app
     temp = req.body.temp;
     symp = req.body.symp;
 
-    request.post(baseURL + '/edit',
+    request.post(baseURL + 'edit',
       {
         json: {
           bpm: bpm,
@@ -327,7 +327,7 @@ app
       var euid = req.params.euid;
       ssn = req.session;
       var uid = ssn.uid;
-      request.post(baseURL + '/delete',
+      request.post(baseURL + 'delete',
         {
           json: {
             euid: euid,
@@ -358,7 +358,7 @@ app
   });
 
 
-////////////////////////////////////////////   DOCTOR VIEWS   /////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////   DOCTOR VIEWS   /////////////////////////////////////////////////////////////////////
 
 //Login View
 app
@@ -474,7 +474,7 @@ app
     temp = req.body.temp;
     symp = req.body.symp;
 
-    request.post(baseURL + '/diag',
+    request.post(baseURL + 'diag',
       {
         json: {
           diagnosis: diag,
@@ -503,6 +503,7 @@ app
       var data;
       request.get(baseURL + 'query/' + euid, (ERR, RES, body) => {
         data = JSON.parse(body)
+        ssn.uid = data.data.uid;
         console.log(data);
         res.render('doctor/edit', {
           'bpm': data.data.bpm,
@@ -527,7 +528,7 @@ app
     temp = req.body.temp;
     symp = req.body.symp;
 
-    request.post(baseURL + '/diag',
+    request.post(baseURL + 'diag',
       {
         json: {
           diagnosis: diag,
