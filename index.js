@@ -1,6 +1,7 @@
 var app = require('express')()
 var session = require('express-session')
 var bodyParser = require('body-parser')
+const {performance} = require('perf_hooks');
 const request = require('request')
 
 //BigchainDB setup
@@ -42,6 +43,9 @@ web3.eth.getAccounts()
   });
 
 //Accessing the contracts
+
+var t0 = performance.now();
+
 var Hospital = contract(HospitalJSON)
 var Patient = contract(PatientJSON)
 var Doctor = contract(DoctorJSON)
@@ -123,7 +127,9 @@ Patient.deployed()
           .doctorCount()
           .then((result) => {
             doctorCount = result.toNumber()
-            console.log('DC:', doctorCount)
+            console.log('DC:', doctorCount);
+            var t1 = performance.now();
+            console.log('Latency of Test ethereum network:'+(t1-t0)+' ms');
           })
           .then(() => {
             for (i = 1; i <= doctorCount; i++) {
@@ -208,9 +214,12 @@ app
 
       patient = patients[pos];
       var data;
+      var t2 = performance.now();
       request.get(baseURL + 'query/all/' + uid, (ERR, RES, body) => {
         data = JSON.parse(body)
-        console.log(data);
+        var t3 = performance.now();
+        console.log('Latency of BigchainDB Flask APIs : '+(t3-t2)+' ms');
+        // console.log(data);
         try {
           res.render('patient/home', {
             'hist': data,
